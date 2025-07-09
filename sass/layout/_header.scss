@@ -1,0 +1,302 @@
+@use '../abstracts/abstracts' as *;
+@use '../base/reset' as rs;
+@use '../abstracts/mixins' as mixins;
+
+
+.header {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 720px;
+    position: relative;
+    @include mixins.breakpoint(tablet) {
+        min-width: 100%;
+        max-width: 1180px;
+    }
+
+    @include mixins.breakpoint(desktop) {
+        min-width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .header__picture {
+        padding: 0;
+        max-width: 100%;
+
+        img {
+            max-width: 100%;
+            margin-bottom: 32px;
+        }
+    }
+
+    .picture-mobile {
+            padding: 0;
+            max-width: 100%;
+        }
+
+    .h1-logo {
+        background: url('img/logo-large.svg') no-repeat;
+        background-size: contain;
+        text-indent: -9999px;
+        display: block;
+        padding: 50px 16px 100px 16px;
+        width: 100%;
+        margin-left: 16px;
+        max-width: 340px;
+    }
+
+    p {
+        color: $dark-grey;
+        font-family: $outfit;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+        margin-bottom: 32px;
+        max-width: 375px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 150px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        li {
+            position: relative;
+        
+            a {
+                display: block;
+                position: relative;
+        
+                img {
+                    position: absolute;
+                    top: -120px;
+                    left: 0;
+                    transition: all 0.3s ease;
+                }
+        
+                .our-black {
+                    z-index: 2;
+                    opacity: 1;
+                }
+        
+                .our-gold {
+                    z-index: 1;
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+            }
+        
+            &:hover {
+                .our-black {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+        
+                .our-gold {
+                    opacity: 1;
+                    transform: translateY(0);
+                    z-index: 3;
+                }
+            }       
+        }
+    }
+
+    .btn-back {
+        position: absolute;
+        z-index: 1;
+
+        .btn-back__item {
+            list-style: none;
+
+            a {
+                display: block;
+                position: relative;
+            
+                img {
+                    position: absolute;
+                    top: -0;
+                    left: 0;
+                    transition: all 0.3s ease;
+                    @include mixins.breakpoint(tablet) {
+                        left: 40px;
+                    }
+                }
+            
+                .back-black {
+                    z-index: 2;
+                    opacity: 1;
+                }
+            
+                .back-gold {
+                    z-index: 1;
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+            }
+            
+            &:hover {
+                .back-black {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+            
+                .back-gold {
+                    opacity: 1;
+                    transform: translateY(0);
+                    z-index: 3;
+                }
+            }
+        }
+    }
+
+    &__content {
+        @include mixins.breakpoint(tablet) {
+            display: flex;
+        }
+    }
+
+    &__picture-tablet {
+        display: none;
+        @include mixins.breakpoint(tablet) {
+            display: block;
+
+            img {
+                max-width: 50%;
+            }
+        }
+    }
+
+    &__picture-mobile {
+        display: block;
+        @include mixins.breakpoint(tablet) {
+            display: none;
+        }
+    }
+
+    &__text {
+        @include mixins.breakpoint(tablet) {
+            padding-left: 0;
+            padding-right: 0;
+            position: absolute;
+            left: 52%;
+            top: 175px;
+            max-width: 100%;
+        }
+    }
+}
+
+.header {
+    @include mixins.breakpoint(tablet) {
+        max-width: 892px;
+    }
+}
+
+.header .header__picture img {
+    @include mixins.breakpoint(tablet) {
+        max-width: 60%;
+        height: auto;
+    }
+}
+
+.header .header__picture p {
+    @include mixins.breakpoint(tablet) {
+        padding-bottom: 38px;
+    }
+}
+
+.header .header__container {
+    @include mixins.breakpoint(desktop) {
+        width: 100%;
+    }
+}
+
+.header__content {
+    @include mixins.breakpoint(desktop) {
+        display: grid;
+        grid-template-columns: 35% 60%;
+        gap: 0;
+        position: relative;
+        width: 100%;
+    }
+}
+
+.header .black-background {
+    @include mixins.breakpoint(desktop) {
+        margin-bottom: 0;
+        background-color: $almost-black;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.header .header__picture {
+    @include mixins.breakpoint(desktop) {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+.header .header__picture .header__picture-mobile {
+    @include mixins.breakpoint(desktop) {
+        display: none;
+    }
+}
+
+.header .header__container .header__picture .header__picture-tablet {
+    @include mixins.breakpoint(desktop) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+}
+
+.header__text {
+    @include mixins.breakpoint(desktop) {
+        position: absolute;
+        left: 60%;
+        top: 24%;
+        min-width: 32%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.header .header__container .h1-logo {
+    @include mixins.breakpoint(desktop) {
+        background: url('img/h1-logo-white.svg') no-repeat;
+        background-size: contain;
+        text-indent: -9999px;
+        display: block;
+        padding: 50px 16px 100px 16px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: -140%;
+        z-index: 2;
+        margin-left: 20px
+    }
+}
+
+.header .header__container ul li a img {
+    @include mixins.breakpoint(desktop) {
+        left: 130px;
+    }
+}
+
+.header p {
+    @include mixins.breakpoint(desktop) {
+        margin-top: 0;
+        margin-left: 17%;
+        padding-bottom: 35px;
+    }
+}
+
+.header .btn-back .btn-back__item a img {
+    @include mixins.breakpoint(desktop) {
+        left: 130px;
+    }
+}
